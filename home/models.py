@@ -263,6 +263,15 @@ class AboutPage(Page):
         verbose_name="Image de la section À propos",
         help_text="Photo d’équipe ou image illustrative.",
     )
+    image = models.ForeignKey(
+        Image,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        verbose_name="Image de la section À propos",
+        help_text="Photo d’équipe ou image illustrative.",
+    )
 
     image_caption = models.CharField(
         "Légende de l’image",
@@ -270,6 +279,7 @@ class AboutPage(Page):
         blank=True,
         default="",  # ✅ default vide
     )
+    
 
     content_panels = Page.content_panels + [
         FieldPanel("intro_title"),
